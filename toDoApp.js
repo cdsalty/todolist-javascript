@@ -10,11 +10,10 @@ const convertObjectToString = obj => JSON.stringify(obj) || "";
 const getTodos = () => convertStringToObj(localStorage.getItem(storageKey)); // local storage has it's own api/function getItem
 
 // Add ToDo Item:
-// convert to string, get current list of todos using spread operator and then add the new todo to it
 const addTodo = todo =>
   localStorage.setItem(
     storageKey,
-    convertObjectToString([...getTodos(), todo])
+    convertObjectToString([...getTodos(), todo]) // use of spread operator
   );
 
 // Delete Todo:
@@ -26,20 +25,27 @@ const deleteTodo = todo =>
 
 // Build/Create the actual todo element
 const buildTodoElement = todo => {
-  const el = document.createElement("li"); // create the actual <li></li>
-  el.classList.add("list-group-item"); // give it a class name of "list-group-item" to be inline the way the html is setup
-  el.innerText = todo; // set the text to 'todo'
-  return el; // return the created element
-}; // why el and not todo?
-
+  const el = document.createElement("li");
+  el.classList.add("list-group-item");
+  el.innerText = todo;
+  return el;
+};
+// append the list item to the/inside the todo-list-container (the ul in the application)
 const appendLiToDom = el =>
-  document.getElementById("todo-list-container").appendChild(el);
-// grabs the ul from the dom and then passes the element into it.
+  document.getElementById("todo-list-container").appendChild(el); // get the list, add the child to it
 
-// To Clear/Completely remove the list items from the view
+// clear-out/delete the list item
 const clearTodoListDisplay = (document.getElementById(
   "todo-list-container"
 ).innerHTML = "");
 
-// Clear the input (current) and once it's submitted, you want to remove whatever was entered into the input.
-const clearInput
+// after text submitted, clear input form
+const clearInput = () => document.getElementById("new-todo-input").value;
+
+// * BUILDIING THE TODO AND UI
+const displayTodos = () => {
+  clearInput();
+  clearTodoListDisplay();
+  getTodos().forEach(_todo => appendLiToDom(buildTodoElement(_todo)));
+  initClickListensers(); // stay tuned...
+};
