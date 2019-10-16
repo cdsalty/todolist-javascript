@@ -46,6 +46,25 @@ const clearInput = () => document.getElementById("new-todo-input").value;
 const displayTodos = () => {
   clearInput();
   clearTodoListDisplay();
-  getTodos().forEach(_todo => appendLiToDom(buildTodoElement(_todo)));
-  initClickListensers(); // stay tuned...
+  getTodos().forEach(_todo => appendLiToDom(buildTodoElement(_todo))); //get Todos stored, forEach one, append it to the list, it being the built element with the text inside
+  initClickListensers(); // once todos are loaded, then this is called
 };
+
+// create and initialize all of our event listeners once our each of our todos has been loaded
+const initClickListensers = () => {
+  Array.from(document.getElementsByClassName("list-group-item")).forEach(
+    _item => {
+      _item.addEventListener("click", $event => {
+        const todo = $event.target.innerText;
+        if (window.confirm("Task Complete: " + todo)) {
+          // ok = true, cancel = false
+          // if they do click "ok," take the appropriate steps:
+          deleteTodo(todo);
+          displayTodos();
+        }
+      });
+    }
+  );
+};
+
+// Create an event to reset our local storage
