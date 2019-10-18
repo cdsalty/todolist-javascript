@@ -82,10 +82,10 @@ document
   });
 
 // for reseting local storage
-document
-  .getElementById("reset-storage-btn")
-  .addEventListener("click", $event => {
-    localStorage.removeItem(storageKey); // deletes todos
-    displayTodos(); // once we clear, we want to then display the list
-    clearInput();
-  });
+// document
+//   .getElementById("reset-storage-btn")
+//   .addEventListener("click", $event => {
+//     localStorage.removeItem(storageKey); // deletes todos
+//     displayTodos(); // once we clear, we want to then display the list
+//     clearInput();
+//   });
