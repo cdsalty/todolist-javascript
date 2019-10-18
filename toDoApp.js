@@ -46,7 +46,7 @@ const displayTodos = () => {
   clearInput();
   clearTodoListDisplay();
   getTodos().forEach(_todo => appendLiToDom(buildTodoElement(_todo))); //get Todos stored, forEach one, append it to the list, it being the built element with the text inside
-  initClickListensers(); // once todos are loaded, then this is called
+  initClickListensers(); // once todos are loaded, THEN call initClickListeners
 };
 
 // create and initialize all of our event listeners once our each of our todos has been loaded
@@ -65,30 +65,27 @@ const initClickListensers = () => {
       });
     });
 };
-// when the dom loads, display todos
-// REVIEW
-document.addEventListener("DOMContentLoaded", () => displayTodos()); // when the dom loads, display todos
 
-// TO ADD TODOS
+// On PAGE RELOAD/REFRESH (did not consider first time) add event listner on dom content
+document.addEventListener("DOMContentLoaded", () => displayTodos());
+
+// TO ADD TODOS: add event listener, get data, check data and return a display of todos
 document
   .getElementById("submit-new-todo-btn")
   .addEventListener("click", $event => {
     const newTodoInput = document.getElementById("new-todo-input");
     if (newTodoInput.value) {
-      // SIMPLE: IF IT HAS A VALUE THEN PROCEED
-      addTodo(newTodoInput.value.trim()); //remove white-space on the ends
+      // SIMPLE: IF IT HAS A VALUE THEN ADDTODO AND PROCEED
+      addTodo(newTodoInput.value.trim());
       displayTodos();
     }
   });
 
-/* Create an event to reset our local storage
-  - create a function that listens for clicks on 'reset local storage'
-  - reset local local storage
-*/
+// for reseting local storage
 document
   .getElementById("reset-storage-btn")
   .addEventListener("click", $event => {
-    localStorage.removeItem(storageKey);
+    localStorage.removeItem(storageKey); // deletes todos
     displayTodos(); // once we clear, we want to then display the list
     clearInput();
   });

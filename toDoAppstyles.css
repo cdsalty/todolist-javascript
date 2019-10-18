@@ -1,0 +1,58 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-image: url("bg2.jpeg");
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+#main {
+  width: 520px;
+  margin-left: calc(50% - 260px); /*520/2=260 so display accordingly*/
+  background-color: rgba(255, 255, 255, 0.475);
+  margin-top: 100px;
+  padding: 20px;
+  box-shadow: 3px 3px 6px black;
+  border-radius: 5px;
+}
+
+#todo-list-container {
+  overflow-y: auto; /* no matter how many todos, we don't want the main block to disppear. Want the container to scroll down */
+  height: 500px;
+}
+
+.small-bottom-margin {
+  margin-bottom: 15px;
+}
+
+#new-todo-input {
+  width: 400px;
+  position: relative;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.673);
+}
+
+/* Getting Submit on same line */
+#submit-new-todo-btn {
+  float: right;
+  /* width: 75px; */
+}
+
+#todo-list-container li {
+  cursor: pointer;
+  background-color: white;
+}
+
+#todo-list-container li:hover {
+  cursor: pointer;
+  background-color: rgba(218, 218, 218, 0.673);
+}
+
+#reset-storage-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 25px;
+}

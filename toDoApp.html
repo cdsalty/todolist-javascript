@@ -15,19 +15,26 @@
   </head>
   <body>
     <div id="main">
-      <h1 class="display-4 small-bottom-margin" id="header">ToDo List</h1>
+      <h1 class="display-4 small-bottom-margin text-center" id="header">
+        Let's Do This!
+      </h1>
       <div id="new-todo-form-container" class="small-bottom-margin">
-        <input type="text" class="form-control" id="new-todo-input" />
+        <input
+          type="text"
+          placeholder="the story starts here"
+          class="form-control"
+          id="new-todo-input"
+        />
         <button class="btn btn-secondary" id="submit-new-todo-btn">
-          submit
+          Submit
         </button>
       </div>
       <ul class="list-group" id="todo-list-container"></ul>
     </div>
     <!-- to make sure you're able to restore/reset local storage -->
-    <button class="btn btn-danger" id="reset-storage-btn">
+    <!-- <button class="btn btn-danger disabled" id="reset-storage-btn">
       Reset Local Storage
-    </button>
+    </button> -->
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
